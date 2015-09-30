@@ -73,7 +73,7 @@ public class ValidationFramework {
         employee.setLastName("Raja");
         employee.setEmail("hasonraja@therapserveices.net");
         employee.setAge(65);
-        employee.setSex("male");
+        employee.setSex("smale");
         validateObject(employee);
     }
 
@@ -95,21 +95,21 @@ public class ValidationFramework {
                 e.printStackTrace();
             }
             for (Annotation annotation : annotations) {
-                if(valid==false){
+                if (valid == false) {
                     break;
                 }
                 if (annotation instanceof NotNull) {
                     if (object instanceof String) {
-                        if ( object.equals("")) {
+                        if (object.equals("")) {
                             valid = false;
                             System.out.println("Error!!!");
-                            System.out.println("Attribute "+field.getName() + " is Null.");
+                            System.out.println("Attribute " + field.getName() + " is Null.");
                         }
                     } else if (object instanceof Integer) {
                         if (object == null) {
                             valid = false;
                             System.out.println("Error!!!");
-                            System.out.println("Attribute "+field.getName() + " is Null.");
+                            System.out.println("Attribute " + field.getName() + " is Null.");
                         }
                     }
 
@@ -119,16 +119,29 @@ public class ValidationFramework {
                         if (((Integer) object).intValue() > 150 || ((Integer) object).intValue() < 15) {
                             valid = false;
                             System.out.println("Error!!!");
-                            System.out.println("Attribute "+field.getName() + " is out of range.");
+                            System.out.println("Attribute " + field.getName() + " is out of range.");
                         }
                     }
                     //   System.out.println("Range");
                 } else if (annotation instanceof ValidEmail) {
                     if (object instanceof String) {
-                        if (validateEmail(object.toString())==false) {
+                        if (validateEmail(object.toString()) == false) {
                             valid = false;
                             System.out.println("Error!!!");
-                            System.out.println("Attribute "+field.getName() + " is invalid.");
+                            System.out.println("Attribute " + field.getName() + " is invalid.");
+                        }
+                    }
+                } else if (annotation instanceof ValidInfo) {
+                    if (object instanceof String) {
+                        if(object.toString().toLowerCase().equals("male")){
+                            ;
+                        }else if(object.toString().toLowerCase().equals("female")){
+                            ;
+                        }
+                        else{
+                            valid = false;
+                            System.out.println("Error!!!");
+                            System.out.println("Attribute " + field.getName() + " is invalid.");
                         }
                     }
                 }

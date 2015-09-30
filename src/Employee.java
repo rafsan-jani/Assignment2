@@ -1,5 +1,3 @@
-import com.sun.istack.internal.*;
-
 /**
  * Created by rafsan.jani on 9/30/15.
  */
@@ -13,22 +11,24 @@ public class Employee {
     private String email;
     @NotNull
     @Range
-
     private Integer age;
     @NotNull
+    @ValidInfo
     private String sex;
 
 
-    public Employee(){
+    public Employee() {
 
     }
-    public  Employee(String firstName,String lastName,String email,Integer age,String sex) {
+
+    public Employee(String firstName, String lastName, String email, Integer age, String sex) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setEmail(email);
         this.setAge(age);
         this.setSex(sex);
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -69,7 +69,7 @@ public class Employee {
         this.sex = sex;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("**********************************************");
         System.out.println(this.getFirstName());
         System.out.println(this.getLastName());

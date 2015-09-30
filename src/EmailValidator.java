@@ -16,6 +16,7 @@ public class EmailValidator {
     public static EmailValidator getInstance() {
         return emailValidator;
     }
+
     public boolean validate(final String email) {
 
         matcher = pattern.matcher(email);
